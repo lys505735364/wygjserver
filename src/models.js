@@ -1,5 +1,5 @@
 const fs = require('fs');
-const db = require('../config/db');
+const modelBuild = require('./modelBuild');
 
 let files = fs.readdirSync(__dirname + '/models');
 
@@ -16,5 +16,5 @@ for (let f of js_files) {
 }
 
 module.exports.sync = () => {
-    db.sync();
+    modelBuild.sync();
 };

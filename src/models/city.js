@@ -1,10 +1,27 @@
-const db = require('../../config/db');
-const Sequelize = require('sequelize');
+const db = require('../modelBuild');
 module.exports = {
-    name: 'provinceCitys', //数据model名称
+    name: 'ProvinceCity', //数据model名称
     data: db.defineModel('province_citys', { // 表名
-        type: db.STRING(20),
-        name: db.STRING(100),
-        pid: db.STRING(50)
+        id:{
+            type: db.STRING(5),
+            primaryKey: true,
+            allowNull: false
+        },
+        name:{
+            type: db.STRING(100),
+            allowNull: true
+        },
+        pid:{
+            type: db.STRING(5),
+            allowNull: false
+        },
+        level:{
+            type: db.INTEGER(2),
+            allowNull: false
+        }
+    },{
+        timestamps: false
     })
 };
+
+// const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN'];
