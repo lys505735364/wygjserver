@@ -1,4 +1,4 @@
-const db = require('../modelBuild');
+const db = require('../../utils/modelBuild');
 module.exports = {
     name: 'ProvinceCity', //数据model名称
     data: db.defineModel('province_citys', { // 表名
@@ -11,11 +11,11 @@ module.exports = {
             type: db.STRING(100),
             allowNull: true
         },
-        pid:{
+        ParentId:{
             type: db.STRING(5),
             allowNull: false
         },
-        level:{
+        LevelType:{
             type: db.INTEGER(2),
             allowNull: false
         }

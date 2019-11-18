@@ -1,3 +1,9 @@
+/**
+ * 
+ * 此文件已废弃,
+ * 因为官方不建议使用 $* 字符串 代替 运算符
+ */
+
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const operatorsAliases = {

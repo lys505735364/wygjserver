@@ -1,19 +1,20 @@
 
-const fs = require('fs'), router = require('koa-router')(); 
+const fs = require('fs');
+const Router = require('koa-router')(); 
 
 function addMapping(mapping) {    // 遍历每个导入进来的模块的所有属性，根据GET和POST不同添加到router中    
     Object.keys(mapping).map(key => {        
         if (mapping[key].method === "GET" || mapping[key].method === "get") {            
-            router.get(key, mapping[key].handler);            
+            Router.get(key, mapping[key].handler);            
             console.log(`遍历注册URL: ${mapping[key].method} ${key}`);        
         } else if (mapping[key].method === "POST" || mapping[key].method === "post") {            
-            router.post(key, mapping[key].handler);            
+            Router.post(key, mapping[key].handler);            
             console.log(`遍历注册URL: ${mapping[key].method} ${key}`);        
         } else if (mapping[key].method === "DELETE" || mapping[key].method === "delete") {            
-            router.del(key, mapping[key].handler);            
+            Router.del(key, mapping[key].handler);            
             console.log(`遍历注册URL: ${mapping[key].method} ${key}`);        
         } else if (mapping[key].method === "PUT" || mapping[key].method === "put") {            
-            router.put(key, mapping[key].handler);            
+            Router.put(key, mapping[key].handler);            
             console.log(`遍历注册URL: ${mapping[key].method} ${key}`);        
         } else{            // 无效的URL:            
             console.log(`非法的 URL: ${mapping[key].method} ${key}`);        
@@ -31,8 +32,7 @@ function addControllers(dir) {  // 扫描./controllers下所有的JS文件都导
     });
 }
 module.exports = function (dir) {
-    let
-        controllers_dir = dir || 'controllers';
+    let controllers_dir = dir || 'routerControllers';
     addControllers(controllers_dir);
-    return router.routes();
+    return Router.routes();
 }

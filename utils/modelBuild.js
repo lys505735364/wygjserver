@@ -1,13 +1,12 @@
 const Sequelize = require('sequelize');
 const uuid = require('node-uuid');
 const config = require('../config/db-config');
-const sqlOperType = require('./sqlOperType');
-console.log('初始化数据库连接...');
 
 function generateId() {
     return uuid.v4();
 }
 
+console.log('初始化数据库连接对象...');
 var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: config.dialect,
@@ -35,7 +34,6 @@ const TYPES = [
 function defineModel(tableName, attributes, configuration) {
     return sequelize.define(tableName, attributes, configuration);
 }
-
 
 const modelBuildFN = {
     defineModel: defineModel,
