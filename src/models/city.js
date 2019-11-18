@@ -1,7 +1,7 @@
 const db = require('../../utils/modelBuild');
 module.exports = {
     name: 'ProvinceCity', //数据model名称
-    data: db.defineModel('province_citys', { // 表名
+    data: db.defineModel('region', { // 表名
         id:{
             type: db.STRING(5),
             primaryKey: true,
@@ -18,9 +18,17 @@ module.exports = {
         LevelType:{
             type: db.INTEGER(2),
             allowNull: false
+        },
+        CityCode: {
+            type: db.STRING(20)
+        },
+        merger_name: {
+            type: db.STRING(100),
+            field: 'MergerName'
         }
     },{
-        timestamps: false
+        timestamps: false,
+        freezeTableName: true
     })
 };
 

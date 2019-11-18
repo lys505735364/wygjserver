@@ -4,8 +4,9 @@ const Op = Sequelize.Op;
 let ProvinceCity = Models.ProvinceCity;
 const fn_index = async (ctx, next) => {
     const data = await ProvinceCity.findAll({ 
+        // attributes:['id','name','ParentId'],
         where: {
-            level: {
+            LevelType: {
                 [Op.lt]: 2
             } 
         } 
