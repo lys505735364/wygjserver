@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const uuid = require('node-uuid');
-const config = require('../config/db-config');
+const config = require('../db/config');
 
 function generateId() {
     return uuid.v4();
